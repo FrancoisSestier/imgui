@@ -1,2 +1,4 @@
 C:\dev\FreePouille\FreePouille\thirdparty\imgui\bin\Debug-windows-x86_64\ImGui\ImGui.pdb
 C:\dev\FreePouille\FreePouille\thirdparty\imgui\bin-int\Debug-windows-x86_64\ImGui\ImGui.pdb
+C:\Dev\FP\FreePouille\thirdparty\imgui\bin\Debug-windows-x86_64\ImGui\ImGui.pdb
+C:\Dev\FP\FreePouille\thirdparty\imgui\bin-int\Debug-windows-x86_64\ImGui\ImGui.pdb
