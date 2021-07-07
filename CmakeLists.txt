@@ -1,0 +1,54 @@
+cmake_minimum_required(VERSION 3.5 FATAL_ERROR)
+
+# ---- Project ----
+
+set(CMAKE_CXX_STANDARD 20)
+project(imgui
+        VERSION 0.0.6
+        LANGUAGES CXX)
+# Note: update this to your new project's name and version
+
+# ---- Include guards ----
+include(../../../cmake/tools.cmake)
+include(../../../cmake/CPM.cmake)
+CPMAddPackage("gh:TheLartians/PackageProject.cmake@1.6.0")
+
+if(PROJECT_SOURCE_DIR STREQUAL PROJECT_BINARY_DIR)
+  message(
+    FATAL_ERROR
+      "In-source builds not allowed. Please make a new directory (called a build directory) and run CMake from there."
+  )
+endif()
+
+list(APPEND sources 
+    "imconfig.h"
+    "imgui.h"
+    "imgui.cpp"
+    "imgui_draw.cpp"
+    "imgui_internal.h"
+    "imgui_widgets.cpp"
+    "imstb_rectpack.h"
+    "imstb_textedit.h"
+    "imstb_truetype.h"
+    "imgui_demo.cpp"
+    "misc/cpp/imgui_stdlib.h"
+    "misc/cpp/imgui_stdlib.cpp"
+)
+
+add_library(imgui STATIC ${sources})
+
+target_include_directories(imgui
+INTERFACE
+    $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/>
+    $<INSTALL_INTERFACE:include/${PROJECT_NAME}-${PROJECT_VERSION}>
+)
+
+
+
+packageProject(
+  NAME ${PROJECT_NAME}
+  VERSION ${PROJECT_VERSION}
+  BINARY_DIR ${PROJECT_BINARY_DIR}
+  INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include
+  INCLUDE_DESTINATION include/${PROJECT_NAME}-${PROJECT_VERSION}
+)
